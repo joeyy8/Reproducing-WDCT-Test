@@ -1,9 +1,0 @@
-﻿Model,Filtered Num,Avg CS,Opinion CS,NonEthV CS,Avg PCS,Opinion PCS,NonEthV PCS,Explict Reason
-chatglm3-6b,622,0.5,0.5,0.52,0.73,0.73,0.77,CoT Prompting
-chatglm3-6b-base,619,0.59,0.57,0.68,0.85,0.85,0.84,CoT Prompting
-llama-3-8b,617,0.5,0.51,0.45,0.89,0.89,0.88,CoT Prompting
-mistral-7b,622,0.52,0.52,0.5,0.8,0.8,0.84,CoT Prompting
-chatglm3-6b,619,0.57,0.58,0.54,0.67,0.68,0.64,Direct Prompting
-chatglm3-6b-base,619,0.63,0.63,0.62,0.8,0.8,0.79,Direct Prompting
-llama-3-8b,620,0.6,0.61,0.58,0.97,0.97,0.96,Direct Prompting
-mistral-7b,620,0.67,0.67,0.66,0.82,0.82,0.82,Direct Prompting

@@ -1,2 +1,0 @@
-data num,filtered num (not empty),Avg CS,Opinion CS,NonEthV CS,Avg PCS,Opinion PCS,NonEthV PCS,model,ckpt_path,dataset,sample_num,run_time
-624,619,0.6,0.6,0.63,0.97,0.97,0.96,llama-3-8b,/home/blcuzfy2024/Word-Deed-Consistency-Test/output/llama-3-8b-lora-sft_2.0/LATEST,WDCT_NE,-1,1
