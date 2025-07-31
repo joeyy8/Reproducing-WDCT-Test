@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Word-Deed Consistency Test with ChatGLM3-6B
 
 This repository provides instructions and code to reproduce the experiments from the paper *"Large Language Models Often Say One Thing and Do Another"* using the ChatGLM3-6B model with LoRA fine-tuning. The project evaluates the consistency between a model's stated beliefs (words) and its actions (deeds) using the Word-Deed Consistency Test (WDCT) dataset.
@@ -217,3 +218,6 @@ Results are stored in the `result/` directory as CSV files containing overall me
 - **Excel**: Data analysis and visualization
 - **[TablesGenerator](https://www.tablesgenerator.com/)**: Convert Excel tables to LaTeX
 - **Overleaf**: LaTeX document preparation for reporting
+=======
+# Reproducing-WDCT-Test
+>>>>>>> e615937c0cc57f0ad51f81e679ef641ee37d8c72
