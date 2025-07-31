@@ -1,0 +1,13 @@
+﻿temperature,model,Avg CS,Opinion CS,NonEthV CS,Avg PCS,Opinion PCS,NonEthV PCS
+0,chatglm3-6b,0.62,0.61,0.67,0.68,0.69,0.66
+0,llama-3-8b,0.68,0.7,0.6,0.98,0.98,0.96
+0,chatglm3-6b-base,0.58,0.58,0.6,0.78,0.78,0.77
+0,mistral-7b,0.66,0.66,0.67,0.83,0.84,0.79
+0.5,chatglm3-6b,0.6,0.59,0.67,nan,nan,nan
+0.5,llama-3-8b,0.54,0.57,0.38,nan,nan,nan
+0.5,chatglm3-6b-base,0.65,0.66,0.6,nan,nan,nan
+0.5,mistral-7b,0.65,0.67,0.53,nan,nan,nan
+1,llama-3-8b,0.42,0.46,0.23,nan,nan,nan
+1,chatglm3-6b,0.62,0.63,0.57,nan,nan,nan
+1,chatglm3-6b-base,0.67,0.69,0.6,nan,nan,nan
+1,mistral-7b,0.65,0.65,0.67,nan,nan,nan

@@ -1,0 +1,100 @@
+# random seed for batch sampling
+seed: 0
+
+# name for this experiment in the local run directory and on wandb
+exp_name: chatglm3-6b-speak-sft  # 改一个有意义的名字
+
+# the batch size for training; for FSDP, the batch size per GPU is batch_size / (grad_accumulation_steps * num_gpus)
+batch_size: 4  # 保持或根据显存调整
+
+# the batch size during evaluation and sampling, if enabled
+eval_batch_size: 8  # 减小以节省显存
+
+# debug mode (disables wandb, model checkpointing, etc.)
+debug: false
+
+# the port to use for FSDP
+fsdp_port: null
+
+# which dataset(s) to train on; can pass a list like datasets=[hh,shp]
+datasets:
+- WDCT
+mix_dataset=alpaca 
+mix_ratio=9   
+
+# wandb configuration
+wandb:
+  enabled: true  # 启用wandb方便跟踪训练
+  entity: null
+  project: "direct-preference-optimization"
+
+# to create the local run directory and cache models/datasets,
+#   we will try each of these directories in order; if none exist,
+#   we will create the last one and use it
+local_dirs:
+  - output
+
+# whether or not to generate samples during evaluation; disable for FSDP/TensorParallel
+#   is recommended, because they are slow
+sample_during_eval: false  # 禁用以节省时间和显存
+
+# how many model samples to generate during evaluation
+n_eval_model_samples: 8  # 减少样本数
+
+# whether to eval at the very beginning of training
+do_first_eval: true
+
+# an OmegaConf resolver that returns the local run directory, calling a function in utils_gap.py
+local_run_dir: ${get_local_run_dir:${exp_name},${local_dirs}}
+
+# ===== 调整LoRA专用训练参数 =====
+# 学习率（LoRA通常需要比全参数微调更小的学习率）
+lr: 5e-5  # 增大到5e-5（LoRA参数少，需要更大学习率）
+
+# number of steps to accumulate over for each batch
+#   (e.g. if batch_size=4 and gradient_accumulation_steps=2, then we will
+#   accumulate gradients over 2 microbatches of size 2)
+gradient_accumulation_steps: 4  # 增大梯度累积步数，模拟更大batch size
+
+# the maximum gradient norm to clip to
+max_grad_norm: 0.3  # LoRA通常需要更小的梯度裁剪
+
+# the maximum allowed length for an input (prompt + response)
+max_length: 1024  # 可以适当增大
+
+# the maximum allowed length for a prompt
+max_prompt_length: 512  # 可以适当增大
+
+# the number of epochs to train for; if null, must specify n_examples
+n_epochs: 4  # 增加训练轮次
+
+# the number of examples to train for; if null, must specify n_epochs
+n_examples: null
+
+# the number of examples to evaluate on (and sample from, if sample_during_eval is true)
+n_eval_examples: 128  # 减少评估样本数
+
+# the trainer class to use (e.g. BasicTrainer, FSDPTrainer, TensorParallelTrainer)
+trainer: BasicTrainer  # 保持不变
+
+# The optimizer to use; LoRA通常与AdamW配合更好
+optimizer: AdamW  # 改为AdamW
+
+# number of linear warmup steps for the learning rate
+warmup_steps: 500  # 增加warmup步数
+
+# whether or not to use activation/gradient checkpointing
+activation_checkpointing: true  # 启用检查点以节省显存
+
+# evaluate and save model every eval_every steps
+eval_every: 500  # 减少评估频率以加快训练
+
+# prevent wandb from logging more than once per minimum_log_interval_secs
+minimum_log_interval_secs: 5  # 增加日志间隔
+
+change_mode: speak
+
+defaults:
+- _self_
+- model: chatglm3-6b  # 指向模型配置
+- loss: sft  # 先使用SFT训练，之后可切换为dpo

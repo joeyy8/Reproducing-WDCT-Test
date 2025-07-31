@@ -1,0 +1,2 @@
+data num,filtered num (not empty),Avg CS,Opinion CS,NonEthV CS,Avg PCS,Opinion PCS,NonEthV PCS,model,ckpt_path,dataset,sample_num,run_time
+624,619,0.63,0.62,0.64,0.78,0.78,0.77,chatglm3-6b-base,/home/blcuzfy2024/Word-Deed-Consistency-Test/output/chatglm-3-6b-act-dpo-base/LATEST,WDCT_NE,-1,1

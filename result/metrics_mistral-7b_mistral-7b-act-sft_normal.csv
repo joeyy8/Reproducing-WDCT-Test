@@ -1,0 +1,2 @@
+data num,filtered num (not empty),Avg CS,Opinion CS,NonEthV CS,Avg PCS,Opinion PCS,NonEthV PCS,model,ckpt_path,dataset,sample_num,run_time
+624,620,0.67,0.67,0.66,0.82,0.81,0.82,mistral-7b,/home/blcuzfy2024/Word-Deed-Consistency-Test/output/mistral-7b-act-sft/LATEST,WDCT_NE,-1,1
